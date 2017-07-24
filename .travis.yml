@@ -1,0 +1,24 @@
+sudo: true
+
+language: node_js
+
+node_js:
+  - "node"
+
+before_script:
+  - npm i -g gulp-cli
+
+script: gulp
+
+cache:
+  directories:
+    - "node_modules"
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  on:
+    branch: dev
+  target_branch: master
+  local_dir: build
