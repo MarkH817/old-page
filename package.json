@@ -1,0 +1,39 @@
+{
+  "name": "markh817",
+  "version": "0.1.0",
+  "description": "Portfolio site",
+  "main": "gulpfile.babel.js",
+  "scripts": {
+    "test": "lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarkH817/markh817.github.io.git"
+  },
+  "keywords": [
+    "portfolio",
+    "less",
+    "static",
+    "site"
+  ],
+  "author": "Mark Hernandez <markedcode@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MarkH817/markh817.github.io/issues"
+  },
+  "homepage": "https://github.com/MarkH817/markh817.github.io#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-preset-env": "^1.6.0",
+    "browser-sync": "^2.18.13",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-babel": "^6.1.2",
+    "gulp-ejs": "^3.0.1",
+    "gulp-less": "^3.3.2",
+    "gulp-sequence": "^0.4.6",
+    "standard": "^10.0.2"
+  }
+}
