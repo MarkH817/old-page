@@ -4,7 +4,9 @@
   "description": "Portfolio site",
   "main": "gulpfile.babel.js",
   "scripts": {
-    "test": "lint"
+    "build": "gulp build",
+    "dev": "gulp",
+    "test": "standard"
   },
   "repository": {
     "type": "git",

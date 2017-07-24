@@ -1,7 +1,7 @@
 import gulp from 'gulp'
 import gulpSequence from 'gulp-sequence'
 import autoprefixer from 'gulp-autoprefixer'
-import babel from 'gulp-babel'
+// import babel from 'gulp-babel'
 import del from 'del'
 import ejs from 'gulp-ejs'
 import less from 'gulp-less'
