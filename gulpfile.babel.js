@@ -1,11 +1,12 @@
 import gulp from 'gulp'
 import gulpSequence from 'gulp-sequence'
 import autoprefixer from 'gulp-autoprefixer'
-import babel from 'gulp-babel'
 import del from 'del'
 import ejs from 'gulp-ejs'
 import less from 'gulp-less'
 import plumber from 'gulp-plumber'
+import webpack from 'gulp-webpack'
+import config from './webpack.config'
 import browserSync from 'browser-sync'
 
 gulp.task('clean', () => {
@@ -15,7 +16,7 @@ gulp.task('clean', () => {
 gulp.task('js', () => {
   return gulp.src('js/*.js')
     .pipe(plumber())
-    .pipe(babel())
+    .pipe(webpack(config))
     .pipe(gulp.dest('build/js'))
     .pipe(browserSync.stream())
 })
