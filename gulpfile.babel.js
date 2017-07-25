@@ -1,7 +1,7 @@
 import gulp from 'gulp'
 import gulpSequence from 'gulp-sequence'
 import autoprefixer from 'gulp-autoprefixer'
-// import babel from 'gulp-babel'
+import babel from 'gulp-babel'
 import del from 'del'
 import ejs from 'gulp-ejs'
 import less from 'gulp-less'
@@ -10,6 +10,14 @@ import browserSync from 'browser-sync'
 
 gulp.task('clean', () => {
   return del('build/**/*')
+})
+
+gulp.task('js', () => {
+  return gulp.src('js/*.js')
+    .pipe(plumber())
+    .pipe(babel())
+    .pipe(gulp.dest('build/js'))
+    .pipe(browserSync.stream())
 })
 
 gulp.task('less', () => {
@@ -31,12 +39,14 @@ gulp.task('pages', () => {
     .pipe(browserSync.stream())
 })
 
-gulp.task('build', gulpSequence('clean', ['less', 'pages']))
+gulp.task('build', gulpSequence('clean', ['js', 'less', 'pages']))
 
 gulp.task('watch', () => {
   browserSync.init({
     server: 'build'
   })
+
+  gulp.watch('js/**/*.js', ['js'])
 
   gulp.watch('less/**/*.less', ['less'])
 
