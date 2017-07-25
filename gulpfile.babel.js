@@ -5,6 +5,7 @@ import autoprefixer from 'gulp-autoprefixer'
 import del from 'del'
 import ejs from 'gulp-ejs'
 import less from 'gulp-less'
+import plumber from 'gulp-plumber'
 import browserSync from 'browser-sync'
 
 gulp.task('clean', () => {
@@ -13,6 +14,7 @@ gulp.task('clean', () => {
 
 gulp.task('less', () => {
   return gulp.src('less/main.less')
+    .pipe(plumber())
     .pipe(less())
     .pipe(autoprefixer())
     .pipe(gulp.dest('build/css'))
@@ -21,6 +23,7 @@ gulp.task('less', () => {
 
 gulp.task('pages', () => {
   return gulp.src('pages/views/**/*.ejs')
+    .pipe(plumber())
     .pipe(ejs({}, {}, {
       ext: '.html'
     }))
