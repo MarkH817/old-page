@@ -1,4 +1,4 @@
-setTimeout(function () {
-  let splash = document.getElementsByClassName(`splash`)[0]
+setTimeout(() => {
+  let splash = document.getElementById('splash')
   splash.classList.remove('invisible')
 }, 250)
