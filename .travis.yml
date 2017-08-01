@@ -10,10 +10,6 @@ before_script:
 
 script: gulp build
 
-cache:
-  directories:
-    - "node_modules"
-
 deploy:
   provider: pages
   skip_cleanup: true
