@@ -1,5 +1,5 @@
 import path from 'path'
-import webpack from 'webpack'
+// import webpack from 'webpack'
 
 const options = {
   entry: {
@@ -26,7 +26,9 @@ const options = {
         ]
       }
     ]
-  }
+  },
+
+  devtool: 'sourcemap'
 }
 
 export default options

@@ -5,7 +5,8 @@ import del from 'del'
 import ejs from 'gulp-ejs'
 import less from 'gulp-less'
 import plumber from 'gulp-plumber'
-import webpack from 'gulp-webpack'
+import gulpWebpack from 'gulp-webpack'
+import webpack from 'webpack'
 import config from './webpack.config'
 import browserSync from 'browser-sync'
 
@@ -13,10 +14,15 @@ gulp.task('clean', () => {
   return del('build/**/*')
 })
 
+gulp.task('resources', () => {
+  return gulp.src('resources/*')
+    .pipe(gulp.dest('build'))
+})
+
 gulp.task('js', () => {
   return gulp.src('js/*.js')
     .pipe(plumber())
-    .pipe(webpack(config))
+    .pipe(gulpWebpack(config, webpack))
     .pipe(gulp.dest('build/js'))
     .pipe(browserSync.stream())
 })
@@ -40,7 +46,7 @@ gulp.task('pages', () => {
     .pipe(browserSync.stream())
 })
 
-gulp.task('build', gulpSequence('clean', ['js', 'less', 'pages']))
+gulp.task('build', gulpSequence('clean', ['js', 'less', 'pages', 'resources']))
 
 gulp.task('watch', () => {
   browserSync.init({
