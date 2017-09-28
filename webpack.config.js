@@ -1,12 +1,16 @@
 import path from 'path'
-// import webpack from 'webpack'
+import webpack from 'webpack'
 
 const options = {
   entry: {
     index: './js/index.js',
     about: './js/about.js',
     projects: './js/projects.js',
-    contact: './js/contact.js'
+    contact: './js/contact.js',
+    vendor: [
+      'react',
+      'react-dom'
+    ]
   },
 
   output: {
@@ -28,7 +32,11 @@ const options = {
     ]
   },
 
-  devtool: 'sourcemap'
+  devtool: 'sourcemap',
+
+  plugins: [
+    new webpack.optimize.CommonsChunkPlugin('vendor')
+  ]
 }
 
 export default options
