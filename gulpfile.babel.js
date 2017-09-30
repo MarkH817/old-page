@@ -7,7 +7,8 @@ import less from 'gulp-less'
 import plumber from 'gulp-plumber'
 import gulpWebpack from 'gulp-webpack'
 import webpack from 'webpack'
-import config from './webpack.config'
+import configDev from './webpack.dev'
+import configProd from './webpack.prod'
 import browserSync from 'browser-sync'
 
 gulp.task('clean', () => {
@@ -19,10 +20,18 @@ gulp.task('resources', () => {
     .pipe(gulp.dest('build'))
 })
 
-gulp.task('js', () => {
+gulp.task('js:dev', () => {
   return gulp.src('js/*.js')
     .pipe(plumber())
-    .pipe(gulpWebpack(config, webpack))
+    .pipe(gulpWebpack(configDev, webpack))
+    .pipe(gulp.dest('build/js'))
+    .pipe(browserSync.stream())
+})
+
+gulp.task('js:prod', () => {
+  return gulp.src('js/*.js')
+    .pipe(plumber())
+    .pipe(gulpWebpack(configProd, webpack))
     .pipe(gulp.dest('build/js'))
     .pipe(browserSync.stream())
 })
@@ -46,14 +55,16 @@ gulp.task('pages', () => {
     .pipe(browserSync.stream())
 })
 
-gulp.task('build', gulpSequence('clean', ['js', 'less', 'pages', 'resources']))
+gulp.task('build', gulpSequence('clean', ['js:dev', 'less', 'pages', 'resources']))
+
+gulp.task('build:prod', gulpSequence('clean', ['js:prod', 'less', 'pages', 'resources']))
 
 gulp.task('watch', () => {
   browserSync.init({
     server: 'build'
   })
 
-  gulp.watch('js/**/*.js', ['js'])
+  gulp.watch('js/**/*.js', ['js:dev'])
 
   gulp.watch('less/**/*.less', ['less'])
 

@@ -5,6 +5,8 @@
   "main": "gulpfile.babel.js",
   "scripts": {
     "build": "gulp build",
+    "build:dev": "npm run build",
+    "build:prod": "gulp build:prod",
     "dev": "gulp",
     "test": "standard"
   },
@@ -43,6 +45,7 @@
     "gulp-sequence": "^0.4.6",
     "gulp-webpack": "^1.5.0",
     "standard": "^10.0.2",
-    "webpack": "^3.4.0"
+    "webpack": "^3.4.0",
+    "webpack-merge": "^4.1.0"
   }
 }

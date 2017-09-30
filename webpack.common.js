@@ -32,8 +32,6 @@ const options = {
     ]
   },
 
-  devtool: 'sourcemap',
-
   plugins: [
     new webpack.optimize.CommonsChunkPlugin('vendor')
   ]
