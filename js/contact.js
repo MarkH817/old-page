@@ -6,6 +6,8 @@ class Contact extends Component {
     return (
       <div>
         <h2>Contact</h2>
+
+        <p><b>Email</b>: markedcode@gmail.com</p>
       </div>
     )
   }
