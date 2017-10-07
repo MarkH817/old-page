@@ -1,15 +1,19 @@
 import gulp from 'gulp'
-import gulpSequence from 'gulp-sequence'
-import autoprefixer from 'gulp-autoprefixer'
-import del from 'del'
 import ejs from 'gulp-ejs'
+import htmlmin from 'gulp-htmlmin'
 import less from 'gulp-less'
 import plumber from 'gulp-plumber'
+import postcss from 'gulp-postcss'
+import gulpSequence from 'gulp-sequence'
+import sourcemaps from 'gulp-sourcemaps'
 import gulpWebpack from 'gulp-webpack'
 import webpack from 'webpack'
 import configDev from './webpack.dev'
 import configProd from './webpack.prod'
+import autoprefixer from 'autoprefixer'
 import browserSync from 'browser-sync'
+import cssnano from 'cssnano'
+import del from 'del'
 
 gulp.task('clean', () => {
   return del('build/**/*')
@@ -36,11 +40,18 @@ gulp.task('js:prod', () => {
     .pipe(browserSync.stream())
 })
 
-gulp.task('less', () => {
-  return gulp.src('less/main.less')
+gulp.task('styles', () => {
+  let processors = [
+    autoprefixer(),
+    cssnano()
+  ]
+
+  return gulp.src('less/*.less')
     .pipe(plumber())
+    .pipe(sourcemaps.init())
     .pipe(less())
-    .pipe(autoprefixer())
+    .pipe(postcss(processors))
+    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('build/css'))
     .pipe(browserSync.stream())
 })
@@ -51,13 +62,16 @@ gulp.task('pages', () => {
     .pipe(ejs({}, {}, {
       ext: '.html'
     }))
+    .pipe(htmlmin({
+      collapseWhitespace: true
+    }))
     .pipe(gulp.dest('build'))
     .pipe(browserSync.stream())
 })
 
-gulp.task('build', gulpSequence('clean', ['js:dev', 'less', 'pages', 'resources']))
+gulp.task('build', gulpSequence('clean', ['js:dev', 'styles', 'pages', 'resources']))
 
-gulp.task('build:prod', gulpSequence('clean', ['js:prod', 'less', 'pages', 'resources']))
+gulp.task('build:prod', gulpSequence('clean', ['js:prod', 'styles', 'pages', 'resources']))
 
 gulp.task('watch', () => {
   browserSync.init({
@@ -66,7 +80,7 @@ gulp.task('watch', () => {
 
   gulp.watch('js/**/*.js', ['js:dev'])
 
-  gulp.watch('less/**/*.less', ['less'])
+  gulp.watch('less/**/*.less', ['styles'])
 
   gulp.watch('pages/**/*.ejs', ['pages'])
 

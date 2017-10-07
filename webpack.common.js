@@ -9,7 +9,8 @@ const options = {
     contact: './js/contact.js',
     vendor: [
       'react',
-      'react-dom'
+      'react-dom',
+      'react-router'
     ]
   },
 
