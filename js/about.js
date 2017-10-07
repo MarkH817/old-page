@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {render} from 'react-dom'
+import {TimedParagraph as TimedText} from './decor'
 
 class About extends Component {
   render () {
@@ -7,7 +8,9 @@ class About extends Component {
       <div>
         <h2>About</h2>
 
-        <p>My name is Mark Hernandez. I develop for the web!</p>
+        <TimedText period={500}>
+          My name is Mark Hernandez. I develop for the web!
+        </TimedText>
       </div>
     )
   }
