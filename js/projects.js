@@ -28,6 +28,16 @@ class Projects extends Component {
           url: 'https://raw.githubusercontent.com/MarkH817/palette-ballot/master/app/images/icon-128.png',
           alt: 'Palette Ballot logo'
         }
+      },
+      {
+        id: 1,
+        title: 'SyncOrSwim',
+        description: 'A simple, fast, and secure file syncing application.',
+        url: 'https://github.com/QuentinCovert/SyncOrSwim',
+        img: {
+          url: 'https://raw.githubusercontent.com/QuentinCovert/SyncOrSwim/master/src/resources/syncOrSwimLogo.png',
+          alt: 'Sync Or Swim logo'
+        }
       }
     ]
 
