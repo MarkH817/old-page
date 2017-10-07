@@ -4,8 +4,6 @@ export default class ProjectCard extends Component {
   render () {
     let optImage = null
 
-    console.log(this.props.img)
-
     if (this.props.img) {
       optImage = (
         <img className='section media' src={this.props.img.url} alt={this.props.img.alt} />
