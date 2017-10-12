@@ -42,7 +42,7 @@ export default class TimedParagraph extends Component {
       <section>
         <p className='visually-hidden'>{this.props.children}</p>
 
-        <p>{this.props.children.toString().substring(0, this.state.counter)}</p>
+        <p aria-hidden='true'>{this.props.children.toString().substring(0, this.state.counter)}</p>
       </section>
     )
   }
