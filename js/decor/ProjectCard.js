@@ -11,7 +11,7 @@ export default class ProjectCard extends Component {
     }
 
     return (
-      <div className='card'>
+      <div className='card large'>
         <div className='section'>
           <h3>{this.props.title}</h3>
         </div>

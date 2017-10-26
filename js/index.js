@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {render} from 'react-dom'
+import {sleep} from './utils'
 
 class Home extends Component {
   render () {
@@ -13,7 +14,8 @@ class Home extends Component {
 
 render(<Home />, document.getElementById('root'))
 
-setTimeout(() => {
-  let splash = document.getElementById('splash')
-  splash.classList.remove('invisible')
-}, 250)
+sleep(250)
+  .then(() => {
+    let splash = document.getElementById('splash')
+    splash.classList.remove('invisible')
+  })

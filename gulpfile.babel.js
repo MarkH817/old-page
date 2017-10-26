@@ -46,7 +46,7 @@ gulp.task('styles', () => {
     cssnano()
   ]
 
-  return gulp.src('less/*.less')
+  return gulp.src('styles/*.less')
     .pipe(plumber())
     .pipe(sourcemaps.init())
     .pipe(less())
@@ -80,7 +80,7 @@ gulp.task('watch', () => {
 
   gulp.watch('js/**/*.js', ['js:dev'])
 
-  gulp.watch('less/**/*.less', ['styles'])
+  gulp.watch('styles/**/*.less', ['styles'])
 
   gulp.watch('pages/**/*.ejs', ['pages'])
 
