@@ -14,43 +14,49 @@ export default class EmailForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  handleChange () {
+  handleChange (event) {
+    const target = event.target
+    const value = target.type === 'checkbox' ? target.checked : target.value
+    const name = target.name
 
+    this.setState({
+      [name]: value
+    })
   }
 
-  handleSubmit () {
-
+  handleSubmit (event) {
+    event.preventDefault()
+    console.log(this.state)
   }
 
   render () {
-    let emailTo = `mailto:${this.props.email}`
-
     return (
       <section>
-        <form action={emailTo} enctype='text/plain'>
+        <form>
           <fieldset>
             <legend>Email Form</legend>
             <div className='input-group vertical'>
-              <label for='form-name'>Name</label>
-              <input id='form-name' type='text' />
+              <label htmlFor='form-name'>Name</label>
+              <input id='form-name' type='text' name='name' onChange={this.handleChange} />
             </div>
 
             <div className='input-group vertical'>
-              <label for='form-email'>Email</label>
-              <input id='form-email' type='text' />
+              <label htmlFor='form-email'>Email</label>
+              <input id='form-email' type='text' name='email' onChange={this.handleChange} />
             </div>
 
             <div className='input-group vertical'>
-              <label for='form-website'>Website</label>
-              <input id='form-website' type='text' />
+              <label htmlFor='form-website'>Website</label>
+              <input id='form-website' type='text' name='website' onChange={this.handleChange} />
             </div>
 
             <div className='input-group vertical'>
-              <label for='form-message'>Message</label>
-              <input id='form-message' type='text' />
+              <label htmlFor='form-message'>Message</label>
+              <textarea rows='5' id='form-message' type='text' name='message' onChange={this.handleChange} />
             </div>
           </fieldset>
-          <button className='primary'>Submit</button>
+
+          <button className='primary' onClick={this.handleSubmit}>Submit</button>
         </form>
       </section>
     )
