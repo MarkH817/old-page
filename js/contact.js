@@ -10,7 +10,7 @@ class Contact extends Component {
 
         <p><b>Email</b>: markedcode@gmail.com</p>
 
-        <EmailForm email='markedcode' />
+        <EmailForm email='markedcode@gmail.com' />
       </div>
     )
   }
