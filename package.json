@@ -26,7 +26,7 @@
   "homepage": "https://github.com/MarkH817/markh817.github.io#readme",
   "dependencies": {
     "react": "^16.1.1",
-    "react-dom": "^16.1.1"
+    "react-dom": "^16.2.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.6",
