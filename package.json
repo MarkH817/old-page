@@ -40,7 +40,7 @@
     "gulp": "^3.9.1",
     "gulp-ejs": "^3.1.0",
     "gulp-htmlmin": "^3.0.0",
-    "gulp-less": "^3.3.2",
+    "gulp-less": "^3.4.0",
     "gulp-plumber": "^1.1.0",
     "gulp-postcss": "^7.0.0",
     "gulp-sequence": "^0.4.6",
